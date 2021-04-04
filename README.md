@@ -1,5 +1,5 @@
 
-### DJUHNIXINATOR bot template
+### DJUHNIXINATOR discord bot 
 
 This is a repository template to create a discord bot.
 

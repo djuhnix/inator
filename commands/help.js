@@ -1,9 +1,11 @@
+const Discord = require('discord.js');
+
 module.exports = {
     name: 'help',
     usage: "[command]",
     description: "Affiche la page d'aide relative aux commandes.",
     /**
-     * @param {Discord.Message} message 
+     * @param {Discord.Message} message
      * @param {*} args 
      */
 	execute(message, args = "") {
@@ -20,7 +22,7 @@ module.exports = {
 
             return message.channel.send(data, { split: true })
                 .then(() => {
-                    message.delete({timeout: 10, reason: "Commande confirmée"})
+                    message.delete({timeout: 10, reason: "Commande confirmée"});
                 })
                 .catch(error => {
                     console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
