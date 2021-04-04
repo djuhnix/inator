@@ -1,19 +1,21 @@
-const Discord = require('discord.js')
+// eslint-disable-next-line no-unused-vars
+const { Message } = require('discord.js');
 
 
 module.exports = {
-    name: 'ping',
-    description: "Ping me i'm famous",
-    usage: 'Ping!',
-    /**
-     * 
-     * @param {Discord.Message} message 
-     * @param {*} args 
+	name: 'ping',
+	description: 'Ping me i\'m famous',
+	usage: 'Ping!',
+	/**
+     *
+     * @param {Message} message
+     * @param {*} args
      */
-	execute(message, args = "") {
-        message.channel.send("Pong")
-            .then(() => {
-                message.delete({timeout: 10})
-            })
+	// eslint-disable-next-line no-unused-vars
+	execute(message, args = '') {
+		message.channel.send('Pong')
+			.then(() => {
+				message.delete({ timeout: 10 });
+			});
 	},
 };
