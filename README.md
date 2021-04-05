@@ -3,4 +3,4 @@
 
 This is a repository template to create a discord bot.
 
-_forked @tom-shelby/discord-cnam bot_
+- [Bot invite link](https://discord.com/oauth2/authorize?client_id=826701015582769172&scope=bot)
