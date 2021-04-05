@@ -15,27 +15,27 @@ function onGameFinish(message, data) {
 
 	if (data.game.status === 'won') {
 		// data.selector is the user who chose the word (only in custom game mode)
-		if (data.selector) message.channel.send(hangmanOptions.message['successMsg'] + ` ${data.selector.username}... Pense à un mot plus compliqué la prochaine fois!`);
+		if (data.selector) message.channel.send(hangmanOptions.messages['successMsg'] + ` ${data.selector.username}... Pense à un mot plus compliqué la prochaine fois!`);
 
-		else message.channel.send(hangmanOptions.message['successMsg']);
+		else message.channel.send(hangmanOptions.messages['successMsg']);
 	}
 	else if (data.game.status === 'lost') {
 		if (data.selector) {
 			message.channel.send(
 				`${data.selector.username} Vous a tous battu(e)!`
-				+ hangmanOptions.message.gameOverMsg.replace(/{word}/gi, data.game.word),
+				+ hangmanOptions.messages.gameOverMsg.replace(/{word}/gi, data.game.word),
 			);
 		}
 		else {
 			message.channel.send(
-				hangmanOptions.message.gameOver + ' '
-				+ hangmanOptions.message.gameOverMsg.replace(/{word}/gi, data.game.word),
+				hangmanOptions.messages.gameOver + ' '
+				+ hangmanOptions.messages.gameOverMsg.replace(/{word}/gi, data.game.word),
 			);
 		}
 	}
 	else {
 		// If no one answers for 15 minutes
-		message.channel.send(hangmanOptions.message['noAnswersMsg']);
+		message.channel.send(hangmanOptions.messages['noAnswersMsg']);
 	}
 }
 module.exports = {
@@ -63,7 +63,7 @@ module.exports = {
 		switch (mode) {
 		case 'custom':
 			await hangman.create(message.channel, mode, {
-				message: hangmanOptions.message,
+				messages: hangmanOptions.messages,
 			})
 				.then((data) => {
 					onGameFinish(message, data);
@@ -72,7 +72,7 @@ module.exports = {
 		case 'random':
 			if (args.length < 2) {
 				await hangman.create(message.channel, mode, {
-					message: hangmanOptions.message,
+					messages: hangmanOptions.messages,
 				})
 					.then((data) => {
 						onGameFinish(message, data);
@@ -80,7 +80,7 @@ module.exports = {
 			}
 			else {
 				await hangman.create(message.channel, mode, {
-					message: hangmanOptions.message,
+					messages: hangmanOptions.messages,
 					word: args[1],
 				})
 					.then((data) => {

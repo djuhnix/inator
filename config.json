@@ -1,6 +1,6 @@
 {
   "hangmanOptions": {
-	"message": {
+	"messages": {
 	  "createNoPlayers": "On ne peut plus ajouter de joueurs, peut-être plus tard...",
 
 	  "customNotEnoughPlayers": "Pour le mode custom, il doit y avoir au moins deux joueurs...",
