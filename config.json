@@ -19,7 +19,10 @@
 	  "misses": "Raté",
 	  "won": "Gagné!",
 	  "gameOver": "Game over !",
-	  "gameOverMsg": "Le mot était {word}"
+	  "gameOverMsg": "Le mot était {word}",
+
+	  "successMsg": "Félicitation vous avez trouvez le mot!",
+	  "noAnswersMsg" : "15 minutes de passées! La partie va se terminer."
 	}
   }
 }
