@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 const Discord = require('discord.js');
 const hangman = require('discord-hangman');
-const { hangmanOptions } = require('config.json');
+const fs = require('fs');
+const { hangmanOptions } = JSON.parse(fs.readFileSync('config.json').toString());
 
 /**
  *
