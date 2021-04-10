@@ -33,7 +33,7 @@ module.exports = {
 					});
 			}
 			else {
-				message.client.user.presence.activities.forEach((value, index) => {
+				message.client.user.presence.activities.forEach((value) => {
 					message.channel.send(`${message.author} Voici l'activité actuelle: ${value}`)
 						.then(() => {
 							message.delete({ timeout: 10 });

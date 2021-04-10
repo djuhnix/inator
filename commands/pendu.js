@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 const Discord = require('discord.js');
 const hangman = require('discord-hangman');
+const randomWordFR = require('random-word-fr');
 const fs = require('fs');
 const { hangmanOptions } = JSON.parse(fs.readFileSync('config.json').toString());
 
@@ -70,23 +71,13 @@ module.exports = {
 				});
 			break;
 		case 'random':
-			if (args.length < 2) {
-				await hangman.create(message.channel, mode, {
-					messages: hangmanOptions.messages,
-				})
-					.then((data) => {
-						onGameFinish(message, data);
-					});
-			}
-			else {
-				await hangman.create(message.channel, mode, {
-					messages: hangmanOptions.messages,
-					word: args[1],
-				})
-					.then((data) => {
-						onGameFinish(message, data);
-					});
-			}
+			await hangman.create(message.channel, mode, {
+				messages: hangmanOptions.messages,
+				word: randomWordFR(),
+			})
+				.then((data) => {
+					onGameFinish(message, data);
+				});
 			break;
 		}
 	},

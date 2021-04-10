@@ -14,12 +14,14 @@
     "moment": "^2.29.1",
     "momentjs": "^2.0.0",
     "nodemon": "^2.0.7",
+    "random-word-fr": "^1.0.3",
     "request": "^2.88.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bot.js",
-    "watch": "nodemon"
+    "watch": "nodemon",
+    "deploy": "git push heroku master && git push origin master"
   },
   "keywords": [],
   "author": "",

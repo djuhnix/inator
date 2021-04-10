@@ -16,13 +16,16 @@
 	  "invalidWord": "Ce n'est pas un mot valide. Pas d'espaces et au moins 3 caractères.",
 	  "tooManyInvalidsWords": "Désolé, trop de mots invalide, essaye encore lors de la prochaine partie. Tu es disqualifié(e).",
 
-	  "misses": "Raté",
+	  "misses": "Ratées",
 	  "won": "Gagné!",
 	  "gameOver": "Game over !",
 	  "gameOverMsg": "Le mot était {word}",
 
 	  "successMsg": "Félicitation vous avez trouvez le mot!",
 	  "noAnswersMsg" : "15 minutes de passées! La partie va se terminer."
-	}
+	},
+	"wordList" : [
+
+	]
   }
 }
