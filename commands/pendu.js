@@ -14,16 +14,17 @@ function onGameFinish(message, data) {
 	// If the game is cancelled or no one joins it
 	if(!data.game) return;
 
+	const user = `<@${data.selector.userID}>`;
 	if (data.game.status === 'won') {
 		// data.selector is the user who chose the word (only in custom game mode)
-		if (data.selector) message.channel.send(hangmanOptions.messages['successMsg'] + ` ${data.selector.username}... Pense à un mot plus compliqué la prochaine fois!`);
+		if (data.selector) message.channel.send(hangmanOptions.messages['successMsg'] + user + ' ... Pense à un mot plus compliqué la prochaine fois!');
 
 		else message.channel.send(hangmanOptions.messages['successMsg']);
 	}
 	else if (data.game.status === 'lost') {
 		if (data.selector) {
 			message.channel.send(
-				`${data.selector.username} Vous a tous battu(e)!`
+				`${user} Vous a tous battu(e)!`
 				+ hangmanOptions.messages.gameOverMsg.replace(/{word}/gi, data.game.word),
 			);
 		}
@@ -71,13 +72,23 @@ module.exports = {
 				});
 			break;
 		case 'random':
-			await hangman.create(message.channel, mode, {
-				messages: hangmanOptions.messages,
-				word: randomWordFR(),
-			})
-				.then((data) => {
-					onGameFinish(message, data);
-				});
+			if (args.length === 2 && args[1] === 'en') {
+				await hangman.create(message.channel, mode, {
+					messages: hangmanOptions.messages,
+				})
+					.then((data) => {
+						onGameFinish(message, data);
+					});
+			}
+			else {
+				await hangman.create(message.channel, mode, {
+					messages: hangmanOptions.messages,
+					word: randomWordFR(),
+				})
+					.then((data) => {
+						onGameFinish(message, data);
+					});
+			}
 			break;
 		}
 	},
