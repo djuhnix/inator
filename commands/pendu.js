@@ -24,7 +24,7 @@ function onGameFinish(message, data) {
 	else if (data.game.status === 'lost') {
 		if (data.selector) {
 			message.channel.send(
-				`${user} Vous a tous battu(e)!`
+				`${user} Vous a tous battu(e)! C'est triste :sob:`
 				+ hangmanOptions.messages.gameOverMsg.replace(/{word}/gi, data.game.word),
 			);
 		}
