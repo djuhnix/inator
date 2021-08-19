@@ -1,5 +1,6 @@
 require('dotenv').config();
 const Discord = require('discord.js');
+const cron = require('cron');
 require('colors');
 
 const client = new Discord.Client();
@@ -8,7 +9,7 @@ client.jobs = new Discord.Collection();
 
 const fs = require('fs');
 const prefix = process.env.BOT_COMMAND_PREFIX;
-
+const { morningJobMessages } = JSON.parse(fs.readFileSync('config.json').toString());
 console.log('Loading commands...');
 /**
  * @constant {}
@@ -27,6 +28,19 @@ console.log('Commands loaded...');
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	console.log(`Bot command prefix: ${process.env.BOT_COMMAND_PREFIX}`);
+
+	// add a morning job to send a message every 8am
+	let morningJob = new cron.CronJob('00 00 08 * * *', () => {
+		// This runs every day at 08:00:00, you can do anything you want
+		// Specifing your guild (server) and your channel
+		const guild = client.guilds.cache.get(process.env.GUILD_ID);
+		const channel = guild.channels.cache.get(process.env.CHAT_ROOM_ID);
+
+		channel.send(morningJobMessages[Math.floor(Math.random() * morningJobMessages.length)]);
+	});
+
+	// When you want to start it, use:
+	morningJob.start()
 
 	// console.log(client.users)
 
