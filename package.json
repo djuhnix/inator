@@ -4,7 +4,7 @@
   "description": "A discord bot",
   "main": "bot.js",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.5",
+    "cheerio": "^1.0.0-rc.10",
     "colors": "^1.4.0",
     "cron": "^1.8.2",
     "discord-hangman": "^1.0.3",
