@@ -14,7 +14,8 @@ module.exports = {
 	execute(message, args = '') {
 		let answer = morningJobMessages[Math.floor(Math.random() * morningJobMessages.length)];
 		message.channel.send(answer)
-			.then(() => {
+			.then((msg) => {
+				msg.delete({ timeout: 10000 })
 				message.delete({ timeout: 10 });
 			});
 	},
