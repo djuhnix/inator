@@ -30,17 +30,22 @@ client.on('ready', () => {
 	console.log(`Bot command prefix: ${process.env.BOT_COMMAND_PREFIX}`);
 
 	// add a morning job to send a message every 8am
-	let morningJob = new cron.CronJob('00 00 08 * * *', () => {
+	let lastMessage = '';
+	const morningJob = new cron.CronJob('00 00 08 * * *', () => {
 		// This runs every day at 08:00:00, you can do anything you want
 		// Specifing your guild (server) and your channel
 		const guild = client.guilds.cache.get(process.env.GUILD_ID);
 		const channel = guild.channels.cache.get(process.env.CHAT_ROOM_ID);
-
-		channel.send(morningJobMessages[Math.floor(Math.random() * morningJobMessages.length)]);
+		let message = '';
+		while (message === lastMessage) {
+			message = morningJobMessages[Math.floor(Math.random() * morningJobMessages.length)];
+		}
+		channel.send(message);
+		lastMessage = message;
 	});
 
 	// When you want to start it, use:
-	morningJob.start()
+	morningJob.start();
 
 	// console.log(client.users)
 
