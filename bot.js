@@ -31,7 +31,7 @@ client.on('ready', () => {
 
 	// add a morning job to send a message every 8am
 	let lastMessage = '';
-	const morningJob = new cron.CronJob('00 00 08 * * *', () => {
+	const morningJob = new cron.CronJob('00 00 09 * * *', () => {
 		// This runs every day at 08:00:00, you can do anything you want
 		// Specifing your guild (server) and your channel
 		const guild = client.guilds.cache.get(process.env.GUILD_ID);
@@ -42,7 +42,7 @@ client.on('ready', () => {
 		}
 		channel.send(message);
 		lastMessage = message;
-	});
+	}, null, true, 'Europe/Paris');
 
 	// When you want to start it, use:
 	morningJob.start();
