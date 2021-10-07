@@ -1,24 +1,29 @@
 {
   "morningJobMessages" : [
-    "Bonjour !",
-    "Mbote na bino bana Total !",
-    "Hola Hola !",
+    	"Bonjour !",
+    	"Mbote na bino bana Total !",
+    	"Hola Hola !",
 	"Buongiorno in italiano !",
-    "Hello la mif !",
+   	"Hello la mif !",
 	"Salut la famille, ça roule ?",
 	"En allemand on dit Hallo !",
 	"En latin c'est Salve !",
 	"Comme disent les russes Здравствуйте, autrement dit Zdravstvuyte !",
-    "Goodmorning everyone !",
+    	"Goodmorning everyone !",
 	"Kon'nichiwa kazoku !\n(Salut la famille pour les non otaku).",
 	"よう皆 -- Yō mina !",
 	"Olá, como vai ?",
 	"Vous savez comment on dit 'bonjour la famille' en grec ?\nC'est Γεια σας οικογένεια -- (Geia sas oikogéneia)",
 	"Bonjour.\n\nLe plus important c'est la salutation qu'elle soit originale ou pas.\n\t— <@782256574290067456>, 2021",
 	"Lela ka 👋🏽",
-    "Il est statistiquement possible de trouver autant de manière de dire bonjour que de membre sur ce serveur.\n Mbote eh !",
+    	"Il est statistiquement possible de trouver autant de manière de dire bonjour que de membre sur ce serveur.\n Mbote eh !",
 	"Oi Oi Oi !",
-    "Bonjour. Je suis à court d'inspirations pour saluer originalement, aidez-moi... :("
+	"Ba masta, position ?"
+	"Ba masta, menco ?"
+	"Ba CR, menco la position ?"
+	"Yo! Bien ou bien ?"
+	"Yo! Bien ou quoi ?"
+    	"Bonjour. Je suis à court d'inspirations pour saluer originalement, aidez-moi... :("
   ],
   "hangmanOptions": {
 	"messages": {
