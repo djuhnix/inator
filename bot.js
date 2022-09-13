@@ -1,11 +1,14 @@
 require('dotenv').config();
-const Discord = require('discord.js');
+
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const cron = require('cron');
 require('colors');
 
-const client = new Discord.Client();
-client.commands = new Discord.Collection();
-client.jobs = new Discord.Collection();
+// const client = new Discord.Client();
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+client.commands = new Collection();
+client.slashCommands = new Collection();
+client.jobs = new Collection();
 
 const fs = require('fs');
 const prefix = process.env.BOT_COMMAND_PREFIX;
@@ -23,9 +26,20 @@ for (const file of commandFiles) {
 }
 console.log('Commands loaded...');
 
+console.log('Loading (/) commands...');
+
+const slashCommandFiles = fs.readdirSync('./slash-commands').filter(file => file.endsWith('.js'));
+
+for (const file of slashCommandFiles) {
+	const command = require(`./slash-commands/${file}`);
+	// Creation d'un nouvel index dynamiquement
+	client.slashCommands.set(command.data.name, command);
+}
+console.log('Application (/) Commands loaded...');
+
 // ------------------------------------------------------------------------
 
-client.on('ready', () => {
+client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	console.log(`Bot command prefix: ${process.env.BOT_COMMAND_PREFIX}`);
 
@@ -82,4 +96,22 @@ client.on('message', message => {
 
 });
 
-client.login(process.env.BOT_TOKEN);
+// migration to discord.js v13 (slash commands)
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	const command = interaction.client.slashCommands.get(interaction.commandName);
+
+	if (!command) return;
+
+	try {
+		await command.execute(interaction);
+	}
+	catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'Une erreur est survenue lors de l\'exécution de cette commande :(', ephemeral: true });
+	}
+});
+
+
+client.login(process.env.BOT_TOKEN).then(() => console.log('Client logged in successfuly'));
