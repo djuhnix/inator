@@ -11,6 +11,7 @@ module.exports = {
 			oEmoji: '0️⃣',
 			xColor: 'PRIMARY',
 			oColor: 'PRIMARY',
+			opponent: interaction.message.mentions.members.first(),
 			embedDescription: 'Tic Tac Toe',
 		});
 		await game.start();
