@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const cron = require('cron');
+const { refreshCommands } = require('deploy-commands');
 require('colors');
 
 // const client = new Discord.Client();
@@ -42,6 +43,8 @@ console.log('Application (/) Commands loaded...');
 client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	console.log(`Bot command prefix: ${process.env.BOT_COMMAND_PREFIX}`);
+
+	refreshCommands().then(() => console.log('Guild (/) commands refreshed'));
 
 	// add a morning job to send a message every 8am
 	let lastMessage = '';
