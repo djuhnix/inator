@@ -102,9 +102,10 @@ client.on('message', message => {
 
 // migration to discord.js v13 (slash commands)
 client.on('interactionCreate', async interaction => {
-	if (!interaction.isChatInputCommand()) return;
+	// if (!interaction.isChatInputCommand()) return; // discord.js v14
+	if (!interaction.isCommand()) return;
 
-	const command = interaction.client.slashCommands.get(interaction.commandName);
+	const command = client.slashCommands.get(interaction.commandName);
 
 	if (!command) return;
 
