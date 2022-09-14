@@ -1,12 +1,13 @@
 require('dotenv').config();
 
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Intents } = require('discord.js');
 const cron = require('cron');
 const { refreshCommands } = require('./deploy-commands.js');
 require('colors');
 
 // const client = new Discord.Client();
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+// const client = new Client({ intents: [GatewayIntentBits.Guilds] }); // discord.js v14
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 client.commands = new Collection();
 client.slashCommands = new Collection();
 client.jobs = new Collection();
