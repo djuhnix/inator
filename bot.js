@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const cron = require('cron');
-const { refreshCommands } = require('deploy-commands');
+const { refreshCommands } = require('./deploy-commands.js');
 require('colors');
 
 // const client = new Discord.Client();
