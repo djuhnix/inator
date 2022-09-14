@@ -1,4 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js');
+// const { SlashCommandBuilder } = require('discord.js'); // discord.js v14
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 const { TicTacToe } = require('djs-games');
 module.exports = {
 	data: new SlashCommandBuilder()
