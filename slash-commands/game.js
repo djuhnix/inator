@@ -12,6 +12,7 @@ module.exports = {
 					{ name: 'Tic Tac Toe', value: 'ttt' },
 				)),
 	async execute(interaction) {
+		console.log(interaction.options.data);
 		const game = new TicTacToe({
 			message: interaction.options.data,
 			xEmoji: '❌',
