@@ -7,8 +7,8 @@ module.exports = {
 	async execute(interaction) {
 		const game = new TicTacToe({
 			message: interaction.message,
-			xEmote: '❌',
-			oEmote: '0️⃣',
+			xEmoji: '❌',
+			oEmoji: '0️⃣',
 			xColor: 'PRIMARY',
 			oColor: 'PRIMARY',
 			embedDescription: 'Tic Tac Toe',
