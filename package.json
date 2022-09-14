@@ -9,6 +9,7 @@
     "cheerio": "^1.0.0-rc.10",
     "colors": "^1.4.0",
     "cron": "^1.8.2",
+    "discord-api-types": "^0.37.9",
     "discord-hangman": "^1.0.3",
     "discord.js": "^13.10.3",
     "djs-games": "^2.1.10",

@@ -1,5 +1,5 @@
 const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord.js');
+const { Routes } = require('discord-api-types/v9');
 const { BOT_TOKEN, GUILD_ID, CLIENT_ID } = process.env;
 const fs = require('node:fs');
 const path = require('node:path');
@@ -14,7 +14,8 @@ for (const file of commandFiles) {
 	commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '10' }).setToken(BOT_TOKEN);
+// version 10 in discord.js 14
+const rest = new REST({ version: '9' }).setToken(BOT_TOKEN);
 
 rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), { body: commands })
 	.then(data => console.log(`Successfully registered ${data.length} application commands.`))
