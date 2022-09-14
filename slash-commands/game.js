@@ -29,6 +29,6 @@ module.exports = {
 		});
 		await game.start();
 
-		await interaction.followUp('Finish!');
+		// await interaction.followUp('Finish!');
 	},
 };
