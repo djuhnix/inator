@@ -76,6 +76,7 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', message => {
+	console.log('message receive', message);
 
 	// On analyse uniquement les messages qui nous intéresse
 	if(!message.content.startsWith(prefix) || message.author.bot) return;
