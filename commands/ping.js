@@ -13,9 +13,9 @@ module.exports = {
      */
 	// eslint-disable-next-line no-unused-vars
 	execute(message, args = '') {
-		message.channel.send('Pong')
+		message.channel.send({ content : 'Pong', reply: { messageReference: message.id } })
 			.then(() => {
-				message.delete({ timeout: 10 });
+				setTimeout(() => message.delete(), 10);
 			});
 	},
 };
