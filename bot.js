@@ -7,7 +7,7 @@ require('colors');
 
 // const client = new Discord.Client();
 // const client = new Client({ intents: [GatewayIntentBits.Guilds] }); // discord.js v14
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 client.commands = new Collection();
 client.slashCommands = new Collection();
 client.jobs = new Collection();
@@ -76,10 +76,12 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', message => {
-	console.log('message receive', message);
 
 	// On analyse uniquement les messages qui nous intéresse
 	if(!message.content.startsWith(prefix) || message.author.bot) return;
+
+	console.log('message receive', message);
+
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 
