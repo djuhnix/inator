@@ -1,7 +1,7 @@
 // const { SlashCommandBuilder } = require('discord.js'); // discord.js v14
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const prefix = process.env.BOT_COMMAND_PREFIX;
 
-const { TicTacToe } = require('djs-games');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('play')
@@ -14,21 +14,7 @@ module.exports = {
 					{ name: 'Tic Tac Toe', value: 'ttt' },
 				)),
 	async execute(interaction) {
-		await interaction.reply('Début du jeu!');
-
-		const message = await interaction.fetchReply();
-
-		const game = new TicTacToe({
-			message: message,
-			xEmoji: '❌',
-			oEmoji: '0️⃣',
-			xColor: 'PRIMARY',
-			oColor: 'PRIMARY',
-			opponent: interaction.member,
-			embedDescription: 'Tic Tac Toe',
-		});
-		await game.start();
-
-		// await interaction.followUp('Finish!');
+		await interaction.reply('Travail en cours...');
+		await interaction.followUp(`Essai la commande \`${prefix}play\`.`);
 	},
 };
