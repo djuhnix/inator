@@ -15,7 +15,7 @@ client.jobs = new Collection();
 const fs = require('fs');
 const prefix = process.env.BOT_COMMAND_PREFIX;
 const { morningJobMessages } = JSON.parse(fs.readFileSync('config.json').toString());
-console.log('Loading commands...');
+console.log('Loading classic commands...');
 /**
  * @constant {}
  */
@@ -26,7 +26,7 @@ for (const file of commandFiles) {
 	// Creation d'un nouvel index dynamiquement
 	client.commands.set(command.name, command);
 }
-console.log('Commands loaded...');
+console.log('Classic commands loaded...');
 
 console.log('Loading (/) commands...');
 
@@ -75,7 +75,7 @@ client.once('ready', () => {
 
 });
 
-client.on('message', message => {
+client.on('messageCreate', message => {
 
 	// On analyse uniquement les messages qui nous intéresse
 	if(!message.content.startsWith(prefix) || message.author.bot) return;
