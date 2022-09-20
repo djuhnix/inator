@@ -56,9 +56,10 @@ module.exports = {
 			data.push('> `random en` : pour un mot en anglais\n');
 			data.push('> `custom` : un joueur élu choisi un mot\n');
 			data.push(`\nEssai \`${prefix}pendu random\`.`);
-			return message.channel.send(data, { split: true })
+			return message.channel.send({ content: data, split: true })
 				.then(() => {
-					message.delete({ timeout: 10, reason: 'Commande confirmée' });
+					message.channel.send({ content: 'Commande confirmée' });
+					setTimeout(() => message.delete(), 10);
 				});
 		}
 		const mode = args[0];
