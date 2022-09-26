@@ -8,6 +8,6 @@ module.exports = {
 		.setDescription('Get a random fact'),
 	async execute(interaction) {
 		const { fact } = getFact();
-		await interaction.reply(fact);
+		await interaction.reply({ content: fact });
 	},
 };

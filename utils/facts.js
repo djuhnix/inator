@@ -16,13 +16,13 @@ async function getFact() {
 		console.error('API Ninja Facts Request failed:', error);
 	}
 }
-
+/*
 getFact()
 	.then(response => {
 		const { fact } = response;
 		return console.log('fact retrieve successfully :', fact);
 	});
-
+*/
 module.exports = {
 	getFact,
 };
