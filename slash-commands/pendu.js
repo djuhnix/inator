@@ -63,7 +63,7 @@ module.exports = {
 		const inEnglish = interaction.options.getBoolean('english');
 		const defaultOption = {
 			messages: hangmanOptions.messages,
-			players: [interaction.user],
+			// players: [interaction.user],
 		};
 		switch (subcommand) {
 		case 'custom':
