@@ -19,7 +19,7 @@ async function getFact() {
 
 getFact()
 	.then(response => {
-		const { fact } = response.data[0];
+		const { fact } = response;
 		return console.log('fact retrieve successfully :', fact);
 	});
 
