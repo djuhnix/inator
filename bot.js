@@ -1,19 +1,20 @@
 require('dotenv').config();
+require('./utils/deploy-commands.js');
+require('colors');
 
 const { Client, Collection, Intents } = require('discord.js');
 const cron = require('cron');
-// const { refreshCommands } = require('./utils/deploy-commands.js');
-require('colors');
+const fs = require('fs');
+const prefix = process.env.BOT_COMMAND_PREFIX;
 
 // const client = new Client({ intents: [GatewayIntentBits.Guilds] }); // discord.js v14
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 client.commands = new Collection();
+
 client.slashCommands = new Collection();
 client.jobs = new Collection();
 
-const fs = require('fs');
 const { sendMorningMessage, sendMorningFact } = require('./utils/morning');
-const prefix = process.env.BOT_COMMAND_PREFIX;
 
 console.log('Loading classic commands...');
 /**
