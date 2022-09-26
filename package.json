@@ -6,6 +6,7 @@
   "dependencies": {
     "@discordjs/builders": "^1.2.0",
     "@discordjs/rest": "^1.1.0",
+    "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.10",
     "colors": "^1.4.0",
     "cron": "^1.8.2",
