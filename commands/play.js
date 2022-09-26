@@ -21,12 +21,12 @@ module.exports = {
 			data.push('> `ppc` : pour le pierre-papier-ciseaux');
 			data.push('> `ppc @adversaire` : pour jouer contre quelqu\'un');
 			data.push('> `p4 @adversaire` : pour jouer au puissance 4 contre quelqu\'un');
-			data.push('> `snake` : pour le snake (coming soon)');
+			data.push('> `snake` : pour le snake (coming soon... ou pas)');
 			// data.push('> `custom` : un joueur élu choisi un mot\n');
 			data.push(`\nEssai \`${prefix}play ttt\`.`);
 			return message.channel.send(data.join('\n'))
 				.then(() => {
-					message.delete({ timeout: 10, reason: 'Commande confirmée' });
+					setTimeout(() => message.delete(), 10);
 				});
 		}
 		const mode = args[0];
@@ -57,7 +57,12 @@ module.exports = {
 			await game.start();
 			break;
 		case 'snake':
-			// TODO
+			message.channel.send('Coming soon on a dit !')
+				.then(() => {
+					setTimeout(() => message.delete(), 10);
+				});
+			// TODO : code raising an error
+			/*
 			game = new SnakeGame({
 				message: message,
 				buttons: true,
@@ -70,6 +75,7 @@ module.exports = {
 				downButton: '▼',
 			});
 			await game.start();
+			*/
 		}
 	},
 };

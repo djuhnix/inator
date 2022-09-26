@@ -1,5 +1,5 @@
 const { getChatRoomChannel } = require('./index');
-const { getFact } = require('./facts');
+const { getFact } = require('./requests');
 const fs = require('fs');
 const { morningJobMessages } = JSON.parse(fs.readFileSync('config.json').toString());
 

@@ -11,12 +11,13 @@ module.exports = {
 	 * @param {Message} message
 	 * @param {String} args
 	 */
+	// eslint-disable-next-line no-unused-vars
 	execute(message, args = '') {
 		const answer = morningJobMessages[Math.floor(Math.random() * morningJobMessages.length)];
 		message.channel.send(answer)
 			.then((msg) => {
-				msg.delete({ timeout: 10000 });
-				message.delete({ timeout: 10 });
+				setTimeout(() => msg.delete(), 10);
 			});
+		setTimeout(() => message.delete(), 10);
 	},
 };

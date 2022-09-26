@@ -29,7 +29,6 @@ for (const file of commandFiles) {
 }
 console.log('Classic commands loaded...');
 
-
 console.log('Loading (/) commands...');
 
 const slashCommandFiles = fs.readdirSync('./slash-commands').filter(file => file.endsWith('.js'));
