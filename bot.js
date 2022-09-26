@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { Client, Collection, Intents } = require('discord.js');
 const cron = require('cron');
-const { refreshCommands } = require('./utils/deploy-commands.js');
+// const { refreshCommands } = require('./utils/deploy-commands.js');
 require('colors');
 
 // const client = new Client({ intents: [GatewayIntentBits.Guilds] }); // discord.js v14
@@ -47,7 +47,7 @@ client.once('ready', () => {
 	console.log(`Bot command prefix: ${process.env.BOT_COMMAND_PREFIX}`);
 
 	// slash commands refresh
-	refreshCommands().then(() => console.log('Guild (/) commands refreshed'));
+	// refreshCommands().then(() => console.log('Guild (/) commands refreshed'));
 
 	// add a morning job to send a message every 8am
 	let lastMessage = '';
