@@ -46,7 +46,7 @@ client.once('ready', () => {
 	console.log(`Bot command prefix: ${process.env.BOT_COMMAND_PREFIX}`);
 
 	// slash commands refresh
-	// refreshCommands().then(() => console.log('Guild (/) commands refreshed'));
+	refreshCommands().then(() => console.log('Guild (/) commands refreshed'));
 
 	// add a morning job to send a message every 8am
 	let lastMessage = '';

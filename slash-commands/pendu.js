@@ -17,20 +17,20 @@ function onGameFinish(interaction, data) {
 	const user = data.selector;
 	if (data.game.status === 'won') {
 		// data.selector is the user who chose the word (only in custom game mode)
-		if (data.selector) interaction.reply({ content: hangmanOptions.messages['successMsg'] + user + ' ... Pense à un mot plus compliqué la prochaine fois!' });
+		if (data.selector) interaction.followUp({ content: hangmanOptions.messages['successMsg'] + user + ' ... Pense à un mot plus compliqué la prochaine fois!' });
 
-		else interaction.reply({ content: hangmanOptions.messages['successMsg'] });
+		else interaction.followUp({ content: hangmanOptions.messages['successMsg'] });
 	}
 	else if (data.game.status === 'lost') {
 		if (data.selector) {
-			interaction.reply({
+			interaction.followUp({
 				content:
 					`${user} Vous a tous battu(e)! C'est triste :sob:`
 					+ hangmanOptions.messages.gameOverMsg.replace(/{word}/gi, data.game.word),
 			});
 		}
 		else {
-			interaction.reply({
+			interaction.followUp({
 				content:
 					hangmanOptions.messages.gameOver + ' '
 					+ hangmanOptions.messages.gameOverMsg.replace(/{word}/gi, data.game.word),
@@ -39,7 +39,7 @@ function onGameFinish(interaction, data) {
 	}
 	else {
 		// If no one answers for 15 minutes
-		interaction.reply({ content: hangmanOptions.messages['noAnswersMsg'] });
+		interaction.followUp({ content: hangmanOptions.messages['noAnswersMsg'] });
 	}
 }
 
