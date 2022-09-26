@@ -80,7 +80,7 @@ client.on('messageCreate', message => {
 	// On analyse uniquement les messages qui nous intéresse
 	if(!message.content.startsWith(prefix) || message.author.bot) return;
 
-	console.log('message receive :', message.content);
+	console.log('message receive', message);
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
