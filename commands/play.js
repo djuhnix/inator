@@ -15,16 +15,16 @@ module.exports = {
 		const prefix = process.env.BOT_COMMAND_PREFIX;
 		if (!args.length) {
 			const data = [];
-			data.push('Pour utiliser cette commande il faut préciser le jeu au quel vous souhaitez jouer :\n');
-			data.push('> `ttt` : pour le tic tac toe\n');
-			data.push('> `ttt @adversaire` : pour jouer contre quelqu\'un\n');
-			data.push('> `ppc` : pour le pierre-papier-ciseaux\n');
-			data.push('> `ppc @adversaire` : pour jouer contre quelqu\'un\n');
-			data.push('> `p4 @adversaire` : pour jouer au puissance 4 contre quelqu\'un\n');
-			data.push('> `snake` : pour le snake (coming soon)\n');
+			data.push('Pour utiliser cette commande il faut préciser le jeu au quel vous souhaitez jouer :');
+			data.push('> `ttt` : pour le tic tac toe');
+			data.push('> `ttt @adversaire` : pour jouer contre quelqu\'un');
+			data.push('> `ppc` : pour le pierre-papier-ciseaux');
+			data.push('> `ppc @adversaire` : pour jouer contre quelqu\'un');
+			data.push('> `p4 @adversaire` : pour jouer au puissance 4 contre quelqu\'un');
+			data.push('> `snake` : pour le snake (coming soon)');
 			// data.push('> `custom` : un joueur élu choisi un mot\n');
 			data.push(`\nEssai \`${prefix}play ttt\`.`);
-			return message.channel.send(data, { split: true })
+			return message.channel.send(data.join('\n'))
 				.then(() => {
 					message.delete({ timeout: 10, reason: 'Commande confirmée' });
 				});

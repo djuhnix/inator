@@ -51,12 +51,12 @@ module.exports = {
 		const prefix = process.env.BOT_COMMAND_PREFIX;
 		if (!args.length) {
 			const data = [];
-			data.push('Pour jouer au pendu il faut préciser le mode de jeu entre :\n');
-			data.push('> `random` : je choisi un mot au hasard\n');
-			data.push('> `random en` : pour un mot en anglais\n');
-			data.push('> `custom` : un joueur élu choisi un mot\n');
+			data.push('Pour jouer au pendu il faut préciser le mode de jeu entre :');
+			data.push('> `random` : je choisi un mot au hasard');
+			data.push('> `random en` : pour un mot en anglais');
+			data.push('> `custom` : un joueur élu choisi un mot');
 			data.push(`\nEssai \`${prefix}pendu random\`.`);
-			return message.channel.send(data, { split: true })
+			return message.channel.send(data.join('\n'))
 				.then(() => {
 					message.delete({ timeout: 10, reason: 'Commande confirmée' });
 				});
