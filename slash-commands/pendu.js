@@ -51,7 +51,8 @@ module.exports = {
 			subcommand
 				.setName('random')
 				.setDescription('Mode random du pendu (le bot choisi le mot)')
-				.addBooleanOption(option => option.setName('english').setDescription('Avec un mot en anglais')),
+				.addBooleanOption(option => option.setName('english').setDescription('Avec un mot en anglais'))
+				.addBooleanOption(option => option.setName('self').setDescription('Jouer tout seul')),
 		)
 		.addSubcommand(subcommand =>
 			subcommand
@@ -61,10 +62,13 @@ module.exports = {
 	async execute(interaction) {
 		const subcommand = interaction.options.getSubcommand();
 		const inEnglish = interaction.options.getBoolean('english');
+		const isSelfPlay = interaction.options.getBoolean('self');
 		const defaultOption = {
 			messages: hangmanOptions.messages,
-			// players: [interaction.user],
 		};
+		if (isSelfPlay) {
+			defaultOption.players = [interaction.user];
+		}
 		switch (subcommand) {
 		case 'custom':
 			await hangman.create(interaction, subcommand, defaultOption)
