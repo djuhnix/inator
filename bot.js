@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { Client, Collection, Intents } = require('discord.js');
 const cron = require('cron');
-const { refreshCommands } = require('./deploy-commands.js');
+const { refreshCommands } = require('./utils/deploy-commands.js');
 require('colors');
 
 // const client = new Client({ intents: [GatewayIntentBits.Guilds] }); // discord.js v14
@@ -12,8 +12,9 @@ client.slashCommands = new Collection();
 client.jobs = new Collection();
 
 const fs = require('fs');
+const { sendMorningMessage, sendMorningFact } = require('./utils/morning');
 const prefix = process.env.BOT_COMMAND_PREFIX;
-const { morningJobMessages } = JSON.parse(fs.readFileSync('config.json').toString());
+
 console.log('Loading classic commands...');
 /**
  * @constant {}
@@ -53,14 +54,9 @@ client.once('ready', () => {
 	const morningJob = new cron.CronJob('00 00 09 * * *', () => {
 		// This runs every day at 08:00:00, you can do anything you want
 		// Specifing your guild (server) and your channel
-		const guild = client.guilds.cache.get(process.env.GUILD_ID);
-		const channel = guild.channels.cache.get(process.env.CHAT_ROOM_ID);
-		let message = '';
-		while (message === lastMessage) {
-			message = morningJobMessages[Math.floor(Math.random() * morningJobMessages.length)];
-		}
-		channel.send(message);
-		lastMessage = message;
+
+		lastMessage = sendMorningMessage(client, lastMessage);
+		sendMorningFact(client);
 	}, null, true, 'Europe/Paris');
 
 	// When you want to start it, use:
