@@ -5,7 +5,6 @@ const cron = require('cron');
 const { refreshCommands } = require('./deploy-commands.js');
 require('colors');
 
-// const client = new Discord.Client();
 // const client = new Client({ intents: [GatewayIntentBits.Guilds] }); // discord.js v14
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 client.commands = new Collection();
@@ -28,6 +27,7 @@ for (const file of commandFiles) {
 }
 console.log('Classic commands loaded...');
 
+/*
 console.log('Loading (/) commands...');
 
 const slashCommandFiles = fs.readdirSync('./slash-commands').filter(file => file.endsWith('.js'));
@@ -38,14 +38,15 @@ for (const file of slashCommandFiles) {
 	client.slashCommands.set(command.data.name, command);
 }
 console.log('Application (/) Commands loaded...');
-
+*/
 // ------------------------------------------------------------------------
 
 client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	console.log(`Bot command prefix: ${process.env.BOT_COMMAND_PREFIX}`);
 
-	refreshCommands().then(() => console.log('Guild (/) commands refreshed'));
+	// slash commands refresh
+	// refreshCommands().then(() => console.log('Guild (/) commands refreshed'));
 
 	// add a morning job to send a message every 8am
 	let lastMessage = '';
@@ -75,12 +76,12 @@ client.once('ready', () => {
 
 });
 
-client.on('messageCreate', message => {
+client.on('message', message => {
 
 	// On analyse uniquement les messages qui nous intéresse
 	if(!message.content.startsWith(prefix) || message.author.bot) return;
 
-	console.log('message receive', message);
+	console.log('message receive', message.content);
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
@@ -104,6 +105,7 @@ client.on('messageCreate', message => {
 });
 
 // migration to discord.js v13 (slash commands)
+/*
 client.on('interactionCreate', async interaction => {
 	// if (!interaction.isChatInputCommand()) return; // discord.js v14
 	if (!interaction.isCommand()) return;
@@ -120,6 +122,6 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'Une erreur est survenue lors de l\'exécution de cette commande :(', ephemeral: true });
 	}
 });
-
+*/
 
 client.login(process.env.BOT_TOKEN).then(() => console.log('Client logged in successfuly'));
