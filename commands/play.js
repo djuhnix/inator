@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 const Discord = require('discord.js');
-const { TicTacToe, RockPaperScissors, ConnectFour, Snake} = require('djs-games');
+const { TicTacToe, RockPaperScissors, ConnectFour, SnakeGame } = require('djs-games');
 
 
 module.exports = {
@@ -58,7 +58,7 @@ module.exports = {
 			break;
 		case 'snake':
 			// TODO
-			game = new Snake({
+			game = new SnakeGame({
 				message: message,
 				buttons: true,
 				snake: '🟩',

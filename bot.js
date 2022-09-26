@@ -27,7 +27,7 @@ for (const file of commandFiles) {
 }
 console.log('Classic commands loaded...');
 
-/*
+
 console.log('Loading (/) commands...');
 
 const slashCommandFiles = fs.readdirSync('./slash-commands').filter(file => file.endsWith('.js'));
@@ -38,7 +38,7 @@ for (const file of slashCommandFiles) {
 	client.slashCommands.set(command.data.name, command);
 }
 console.log('Application (/) Commands loaded...');
-*/
+
 // ------------------------------------------------------------------------
 
 client.once('ready', () => {
@@ -105,7 +105,7 @@ client.on('messageCreate', message => {
 });
 
 // migration to discord.js v13 (slash commands)
-/*
+
 client.on('interactionCreate', async interaction => {
 	// if (!interaction.isChatInputCommand()) return; // discord.js v14
 	if (!interaction.isCommand()) return;
@@ -122,6 +122,6 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'Une erreur est survenue lors de l\'exécution de cette commande :(', ephemeral: true });
 	}
 });
-*/
+
 
 client.login(process.env.BOT_TOKEN).then(() => console.log('Client logged in successfuly'));
