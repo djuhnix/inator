@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 const Discord = require('discord.js');
-const { TicTacToe, RockPaperScissors, ConnectFour, SnakeGame } = require('djs-games');
+const { TicTacToe, RockPaperScissors, ConnectFour } = require('djs-games');
 
 
 module.exports = {
