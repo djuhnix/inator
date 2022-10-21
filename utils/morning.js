@@ -14,10 +14,11 @@ function sendMorningMessage(client, lastMessage) {
 }
 
 function sendMorningFact(client) {
-	const factText = '';
+	let factText = '';
 	getFact()
 		.then(response => {
 			const { factResponse } = response;
+			factText = factResponse;
 			return console.log('fact retrieve successfully : ', factResponse);
 		});
 	getChatRoomChannel(client)
