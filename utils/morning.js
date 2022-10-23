@@ -14,17 +14,15 @@ function sendMorningMessage(client, lastMessage) {
 }
 
 function sendMorningFact(client) {
-	let factText = '';
 	getFact()
 		.then(response => {
-			const { factResponse } = response;
-			factText = factResponse;
-			return console.log('fact retrieve successfully : ', factResponse);
+			const { fact } = response;
+			console.log('fact retrieve successfully : ', fact);
+			getChatRoomChannel(client)
+				.send('Morning fact : \n'
+					+ '> ' + fact,
+				);
 		});
-	getChatRoomChannel(client)
-		.send('Morning fact : \n'
-            + '> ' + factText,
-		);
 }
 
 module.exports = {
